@@ -245,5 +245,46 @@ public class KontaManager {
 		}
 		return vysl_filtra;
 	}
+<<<<<<< HEAD
+=======
+	
+	public static int zistiAutorID(String nick) throws SQLException
+	{
+		int autorid = 0;
+		
+		Connection spojenie = null;
+		PreparedStatement prikaz = null;
+		
+	    Properties vlast_spojenia = Defs.nastavVlastSpoj();
+		String url = "jdbc:postgresql://localhost:5432/projekt";
+		
+	    spojenie = DriverManager.getConnection(url, vlast_spojenia);
+	    
+		spojenie.setAutoCommit(false);	// nastavenie transakcie
+	    
+	    String sql = "SELECT id FROM konta WHERE nick = ?";
+	    
+	    /* nastavenie SQL prikazu */
+	    prikaz = (PreparedStatement) spojenie.prepareStatement(sql);
+		prikaz.setString(1, nick);
+		prikaz.execute();
+		
+		/* vysledky prikazu */
+		ResultSet rs = prikaz.getResultSet();
+		
+		/* zistujeme vysledky - malo by vratit iba jedno id, kedze PK */
+		while(rs.next())
+		{
+			autorid = rs.getInt("id");
+		}
+
+		spojenie.commit(); // transakcia vykonaj
+		
+		prikaz.close();
+		spojenie.close();
+		
+	    return autorid;
+	}
+>>>>>>> refs/remotes/origin/master
 
 }

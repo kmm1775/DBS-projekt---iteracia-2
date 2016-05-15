@@ -8,6 +8,10 @@ import javafx.beans.property.StringProperty;
 
 public class PrispevokLoaded extends Prispevok {	
 	int pid;
+<<<<<<< HEAD
+=======
+	int cislo_reakcie=0;
+>>>>>>> refs/remotes/origin/master
 	
     // defaultny konstruktor
     public PrispevokLoaded() {
@@ -23,8 +27,29 @@ public class PrispevokLoaded extends Prispevok {
         this.pid = pid;
     }
     
+<<<<<<< HEAD
+=======
+    public void setReakcia(int reakcia)
+    {
+    	cislo_reakcie = reakcia;
+    }
+    
+    public int getReakcia()
+    {
+    	return cislo_reakcie;
+    }
+    
+>>>>>>> refs/remotes/origin/master
     public int getPID()
     {
     	return pid;
     }
+<<<<<<< HEAD
+=======
+    
+    public void setPID(int pid)
+    {
+    	this.pid = pid;
+    }
+>>>>>>> refs/remotes/origin/master
 }

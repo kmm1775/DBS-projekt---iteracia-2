@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class VseobManager {
+<<<<<<< HEAD
 	 /* OVERENIE EXISTENCIE PODLA ID */
 	/*
 	 public static <T> existujeByVAL(String tabulka, String co_stlpec, String kde_stlpec, <T> val) throws SQLException
@@ -53,6 +54,8 @@ public class VseobManager {
 			
 		}
 	 */
+=======
+>>>>>>> refs/remotes/origin/master
 	
 	public static int existujeByID(String tabulka, String co_stlpec, String kde_stlpec, String val) throws SQLException
 	{
