@@ -1,0 +1,41 @@
+	void massSynch() throws SQLException
+	{
+		List<Forum> sFora = PrispevkyManager.ziskajVsFora();
+		
+		for(Forum f : sFora)
+		{
+			List<Tema> sTemy = PrispevkyManager.ziskajvsTemybyFID(f.getID());
+			
+			for(Tema t : sTemy)
+			{
+				List<PrispevokLoaded> sPrispevky = PrispevkyManager.ziskajvsPrispevkybyTID(t.getID());
+				
+				for (PrispevokLoaded p : sPrispevky)
+				{
+				/* tu by sme mali update elastic */
+				
+				/* dame search response pre dane id prispevku */
+				QueryBuilder qb = QueryBuilders.termQuery("id", new Integer(p.getPID()).toString());
+				
+				/* samotny searchresponse */
+				SearchResponse vyhl_prisp = el_klient.prepareSearch("projekt").
+						setTypes("prispevky").
+						setQuery(qb).
+						setSize(1).
+						execute().actionGet();
+				
+				/* zistime ci je hit */
+				/*for (SearchHit hit : vyhl_prisp.getHits())
+				{
+					System.out.println(hit.getSource());
+				}*/
+				
+				/* ak hit nie je dame do elasticu */
+				
+				/* inak nerobime nic */
+				
+				}
+			}
+		}
+		
+	}
